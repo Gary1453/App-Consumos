@@ -249,7 +249,7 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=4&familia=RESTAURANTES&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0002187771';
 			$familia = $_GET['familia'];
@@ -304,7 +304,7 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=5&familia=ESTACIONES DE SERVICIO&mesid=201510&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0002187771';
 			$familia = $_GET['familia'];
@@ -361,7 +361,7 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=6&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0008788787';
 
@@ -415,7 +415,7 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=7&mesid=201603&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0008788787';
 			$mesid = $_GET['mesid'];
@@ -471,7 +471,7 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=8&mesid=201603&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0010683677';
 			$mesid = $_GET['mesid'];
@@ -524,7 +524,7 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=9&mesid=201602&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			//$clienteid = $_SESSION['clienteid'];
 			$clienteid='0010683677';
 			$mesid = $_GET['mesid'];
