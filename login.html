@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+        
+		<meta charset=”utf8”>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+		<title> Login Bank </title>
+
+
+</head>
+
+
+<body>
+
+
+        <header>
+
+
+        </header>
+
+			<form method="POST"	action="http://localhost/App Consumos/logica.php?opcion=0">
+			<!--<form method="POST"	action="http://192.168.1.7/temporal.php?opcion=0">-->
+
+
+				<div style="display:block;">
+
+					<label>
+
+						<b> NumeroDocumento : </b>
+						<input type = "Text" id="UserId" name="usuario" class="form-control" >
+
+					</label>
+
+					<label> 
+
+						<b> Password : </b>
+						<input type = "password" id = "PassId" name = "password" class="form-control" > 
+
+					</label>
+
+					<label> 
+
+						<b> TipoDocumento :</b>
+
+						<select  id = "TipoDocumento" name="TipoDocumento[]">
+							
+							<option value = 1  selected > Dni </option>
+							<option value = 5 > Carnet de Extranjeria </option>
+							<option value = 3 > Pasaporte  </option>
+
+						</select>
+					
+
+					</label>
+
+
+				</div>
+
+
+			<div id="BotonesID" align="right">
+
+				<input type="submit" id="IngresarID" value="Ingresar" >
+				<input type="reset" id="ResetID" value="Limpiar" >
+
+			</div>
+
+			</form>
+
+
+        <footer>
+
+        
+        </footer>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+
+		<script type="text/javascript">
+
+			$(document).on( 'ready', function(){
+
+				//$("#UserId").val('');
+				//$("#PassId").val('');
+				document.getElementById("UserId").value="";
+				document.getElementById("PassId").value="";
+
+			}
+			
+			);
+
+		</script>
+
+	
+
+</body>
+
+
+</html>
