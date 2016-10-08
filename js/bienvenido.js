@@ -1,7 +1,8 @@
 
 		
 		google.charts.load('current', {'packages':['corechart']});
-		//google.charts.setOnLoadCallback( drawChart );
+		google.charts.load('current', {'packages':['bar']});
+		
 		google.charts.setOnLoadCallback( function(){
 
 				
@@ -13,7 +14,7 @@
 
 				drawChart(arreglo);
 
-			},15000);
+			},1000);
 
 			
 
@@ -22,11 +23,6 @@
 
 function drawChart(arreglo) 
 {
-
-/*var arreglo = [	['Familia', 'ImporteSoles'],['OTROS', 10],	
-['Eat',2],['Commute',2],['Watch TV', 2],['Sleep',    7] ];*/
-//var arreglo = cargarArreglo(arreglo);
-//console.log(arreglo);
 
 
 var data = google.visualization.arrayToDataTable(arreglo);
@@ -71,8 +67,12 @@ chart.draw(data, options);
 		{
 
 	        var url="http://localhost/App Consumos/logica.php";
-	        url = url + "?opcion=1&callback=?";       
+	        url = url + "?opcion=1&callback=?";   
 
+
+	        var arreglo=[ ['Familia', 'ImporteSoles'] ];
+
+	        /*
 	        var arreglo = [  
 
 				['Familia', 'ImporteSoles'],
@@ -80,8 +80,7 @@ chart.draw(data, options);
 				['RESTAURANTES',0], ['PAGOS VARIOS',0],['EDUCACION',0],
 				['ESTACIONES DE SERVICIO',0],['SALUD',0],['SERVICIOS ESPECIALIZADOS',0],
 				['SUPERMERCADOS',0] ,['TRANSPORTE',0] 
-				  		  ];	
-
+				  		  ]; */							  		  	
 	        
 	        var prueba = $.getJSON( url, function(presultado)
 	        {                
@@ -89,17 +88,19 @@ chart.draw(data, options);
 				for(i=0 ; i< presultado.length ; i++)
 				{
 		 		
-				 		arreglo.find(function(variable)
-				 		{
+		 			arreglo.push( [ presultado[i].FAMILIA , parseInt( presultado[i].IMPORTE )  ] );
+	 		/*
+			 		arreglo.find(function(variable)
+			 		{
+				 			if( variable[0] == presultado[i].FAMILIA )
+				 			{
 
-					 			if( variable[0] == presultado[i].FAMILIA )
-					 			{
+				 				variable[1] = parseInt( presultado[i].IMPORTE );
+				 			}
 
-					 				variable[1] = parseInt( presultado[i].IMPORTE );
-					 			}
+			 		}); */
 
-				 		});
-
+				
 				}			
 
 	        });

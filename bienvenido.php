@@ -44,10 +44,7 @@ session_start();
 		</h1>
 
 		<div id="piechart" align="center" style="width: 900px; height: 500px;" ></div>
-
-
-
-
+		<div id="columnchart_material" style="width: 900px; height: 500px;"></div>
 
 
         <footer>

@@ -14,7 +14,7 @@ google.charts.setOnLoadCallback( function(){
 
 		drawChart(arreglo);
 
-	},15000); 
+	}, 1000); 
 
 	cargarGastos();
 
