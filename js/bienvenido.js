@@ -2,17 +2,46 @@
 		
 		google.charts.load('current', {'packages':['corechart']});
 		google.charts.load('current', {'packages':['bar']});
-		
+
 		google.charts.setOnLoadCallback( function(){
 
+
+			var url="http://localhost/App Consumos/logica.php";
+
+			//Cargamos el grafico Pie
+			var url_pie = url +  "?opcion=1&callback=?";
+			var arreglo_pie = cargarArreglo( 'pie' , url_pie );
+			var options_pie = 
+			{
+
+			width: 500,
+			height: 300, 
+			title: 'Mis Consumos Diarios',
+			is3D: true
+
+			};
+
+			//Cargamos el grafico Bar
+			var url_bar = url + "?opcion=2&callback=?"; 
+			var arreglo_bar = cargarArreglo( 'bar' , url_bar );
+			var options_bar = 
+			{
+				chart: 
+				{
 				
+				title: 'Cargos y Abonos',
+				subtitle: 'Ultimo mes en vigencia',
+				
+				}
 
-			var arreglo = cargarArreglo();
-			console.log(arreglo);
+			};			
 			
-			setTimeout(function(){
+			setTimeout(function()
+			{
 
-				drawChart(arreglo);
+				drawChart( arreglo_pie , 'piechart' , options_pie , 'pie' );
+				drawChart( arreglo_bar ,'columnchart_material', options_bar , 'bar' );
+
 
 			},1000);
 
@@ -20,91 +49,101 @@
 
 		});
 
+/* 	 
+	 
+	 Esta funcion nos permite dibujar nuestro grafico 
+	 Se requiere del arreglo de  elementos a mostrar , el id del Div donde se mostrara, 
+	 las opciones del grafico  y el tipo de grafico a mostrar
 
-function drawChart(arreglo) 
+*/
+
+function drawChart( arreglo , elementoId , options , tipo )  
 {
 
+ var data = google.visualization.arrayToDataTable(arreglo);
 
-var data = google.visualization.arrayToDataTable(arreglo);
+//Definimos el elemento a cargar 
 
-var options = 
+if ( tipo == 'pie' )
 {
 
-width: 500,
-height: 300, 
-title: 'Mis Consumos Diarios',
-is3D: true
-
-};
-
-var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-function selectHandler() 
-{
-
-	var selectedItem = chart.getSelection()[0];
-
-	if (selectedItem) 
-	{
-		var familia = data.getValue(selectedItem.row, 0);
-		//alert('The user selected ' + topping);
-		window.location.href="http://localhost/App Consumos/gastos_mensuales.html?familia="+familia;
-
-	}
+ var chart = new google.visualization.PieChart(document.getElementById( elementoId ));
 
 }
 
+else if ( tipo == 'bar' )
+{
+
+ var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+}
+
+//Agregamos Respuestas a eventos 
+
+if( tipo == 'pie' )
+
+{
+	function selectHandler() 
+	{
+
+		var selectedItem = chart.getSelection()[0];
+
+		if (selectedItem) 
+		{
+			var familia = data.getValue(selectedItem.row, 0);
+			window.location.href="http://localhost/App Consumos/gastos_mensuales.html?familia="+familia;
+
+		}
+
+	}
+
 google.visualization.events.addListener(chart, 'select', selectHandler);
+
+}
+
+//Dibujamos el grafico
+
 chart.draw(data, options);
 
 }
 
+// El siguiente metodo nos permite obtener un arreglo de los consumos de un cliente dado
 
-	// El siguiente metodo nos permite obtener un arreglo de los consumos de un cliente dado
+function cargarArreglo( tipo , url )
+{
+	if( tipo == 'pie' )
+	{    	    
+	    var arreglo=[ ['Familia', 'Importe'] ];
+	}
 
-		function cargarArreglo()
+	else if ( tipo == 'bar')
+	{	 	
+	    var arreglo=[ ['MesId', 'Cargos' , 'Abonos' ] ];
+	}
+						  		  	
+    
+    var prueba = $.getJSON( url, function(presultado)
+    {                
 
-		{
+	console.log(presultado);
 
-	        var url="http://localhost/App Consumos/logica.php";
-	        url = url + "?opcion=1&callback=?";   
+	for(i=0 ; i< presultado.length ; i++)
+	{
 
+		if( tipo == 'pie')
+		 	{
+			 arreglo.push( [ presultado[i].FAMILIA , parseInt( presultado[i].IMPORTE )  ] );
+			}
 
-	        var arreglo=[ ['Familia', 'ImporteSoles'] ];
+			else if ( tipo == 'bar')
+			{
+			arreglo.push( [ presultado[i].MESID , parseInt( presultado[i].CARGOS ) , parseInt( presultado[i].ABONOS )  ] );
+			}
+	
+	}			
 
-	        /*
-	        var arreglo = [  
+    });
+			  
+return arreglo;				  
 
-				['Familia', 'ImporteSoles'],
-				['OTROS',0], ['ENTRETENIMIENTO',0], ['TIENDA POR DEPARTAMENTOS',0], 
-				['RESTAURANTES',0], ['PAGOS VARIOS',0],['EDUCACION',0],
-				['ESTACIONES DE SERVICIO',0],['SALUD',0],['SERVICIOS ESPECIALIZADOS',0],
-				['SUPERMERCADOS',0] ,['TRANSPORTE',0] 
-				  		  ]; */							  		  	
-	        
-	        var prueba = $.getJSON( url, function(presultado)
-	        {                
-
-				for(i=0 ; i< presultado.length ; i++)
-				{
-		 		
-		 			arreglo.push( [ presultado[i].FAMILIA , parseInt( presultado[i].IMPORTE )  ] );
-	 		/*
-			 		arreglo.find(function(variable)
-			 		{
-				 			if( variable[0] == presultado[i].FAMILIA )
-				 			{
-
-				 				variable[1] = parseInt( presultado[i].IMPORTE );
-				 			}
-
-			 		}); */
-
-				
-				}			
-
-	        });
-					  
-		return arreglo;				  
-
-    	}
+}

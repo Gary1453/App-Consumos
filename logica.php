@@ -139,31 +139,39 @@ switch ($opcion) {
 			//http://localhost/App Consumos.php?opcion=2&callback
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-
+			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0001319847';
 			$sql = "
 					Select
+					*
+					from
+					(
+						Select
 
-					Con.MesId,
-					Con.Tipo as TipoCargo,
-					sum( ImporteSoles ) as Importe
+						Con.MesId,
+						Con.Tipo as TipoCargo,
+						nvl( sum( ImporteSoles ) , 0 )  as Importe
 
-					from 
-					Natan.Gc_Consumos Con
+						from 
+						Natan.Gc_Consumos Con
 
-					where
-					Con.clienteid='$clienteid'and				
-					to_char( add_months( sysdate , -10 ) , 'YYYYMM' ) < mesid
+						where
+						Con.clienteid='$clienteid'and				
+						to_char( add_months( sysdate , -10 ) , 'YYYYMM' ) < mesid
 
-					group by 
+						group by 
 
-					Con.MesId,
-					Con.Tipo
+						Con.MesId,
+						Con.Tipo  )
 
-					order by 
-					mesid,
-					tipo";
+					pivot 
+					(
+						sum(Importe) for 
+						TipoCargo in ('CARGOS' as Cargos,'ABONOS' as Abonos) 
+					)
+
+					order by mesid";
 
 			$parse = oci_parse($conn,$sql);
 			$res = oci_execute($parse);
