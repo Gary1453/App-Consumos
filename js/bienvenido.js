@@ -20,41 +20,48 @@
 		});
 
 
-		function drawChart(arreglo) {
+function drawChart(arreglo) 
+{
 
-		/*var arreglo = [	['Familia', 'ImporteSoles'],['OTROS', 10],	
-		['Eat',2],['Commute',2],['Watch TV', 2],['Sleep',    7] ];*/
-		//var arreglo = cargarArreglo(arreglo);
-		//console.log(arreglo);
-
-
-		var data = google.visualization.arrayToDataTable(arreglo);
-
-		var options = {
-		title: 'Mis Consumos Diarios'
-		};
-
-		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-		function selectHandler() {
-
-		var selectedItem = chart.getSelection()[0];
-		
-			if (selectedItem) {
-			var familia = data.getValue(selectedItem.row, 0);
-			//alert('The user selected ' + topping);
-			window.location.href="http://localhost/App Consumos/gastos_mensuales.html?familia="+familia;
-	
-			}
-
-		}
-
-        google.visualization.events.addListener(chart, 'select', selectHandler);
+/*var arreglo = [	['Familia', 'ImporteSoles'],['OTROS', 10],	
+['Eat',2],['Commute',2],['Watch TV', 2],['Sleep',    7] ];*/
+//var arreglo = cargarArreglo(arreglo);
+//console.log(arreglo);
 
 
-		chart.draw(data, options);
+var data = google.visualization.arrayToDataTable(arreglo);
 
-		}
+var options = 
+{
+
+width: 500,
+height: 300, 
+title: 'Mis Consumos Diarios',
+is3D: true
+
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+function selectHandler() 
+{
+
+	var selectedItem = chart.getSelection()[0];
+
+	if (selectedItem) 
+	{
+		var familia = data.getValue(selectedItem.row, 0);
+		//alert('The user selected ' + topping);
+		window.location.href="http://localhost/App Consumos/gastos_mensuales.html?familia="+familia;
+
+	}
+
+}
+
+google.visualization.events.addListener(chart, 'select', selectHandler);
+chart.draw(data, options);
+
+}
 
 
 	// El siguiente metodo nos permite obtener un arreglo de los consumos de un cliente dado

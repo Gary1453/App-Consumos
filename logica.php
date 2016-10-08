@@ -28,7 +28,7 @@ switch ($opcion) {
 						Select
 
 						Val.Clienteid,
-						Val.NombreCliente as Nombre,
+						initcap( Val.NombreCliente )  as Nombre,
 						count(1) as cantidad
 
 						from 

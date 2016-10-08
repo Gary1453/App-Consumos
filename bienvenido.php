@@ -43,7 +43,7 @@ session_start();
 
 		</h1>
 
-		<div id="piechart" style="width: 900px; height: 500px;" ></div>
+		<div id="piechart" align="center" style="width: 900px; height: 500px;" ></div>
 
 
 

@@ -1,11 +1,12 @@
 
-
 google.charts.load('current', {'packages':['corechart']});
 //google.charts.setOnLoadCallback( drawChart );
 google.charts.setOnLoadCallback( function(){
 
 
+    
     var arreglo = cargarArreglo();
+
 	//console.log(arreglo);
 	
 	setTimeout( function()
@@ -14,6 +15,8 @@ google.charts.setOnLoadCallback( function(){
 		drawChart(arreglo);
 
 	},15000); 
+
+	cargarGastos();
 
 });
 
@@ -25,6 +28,8 @@ var data = google.visualization.arrayToDataTable(arreglo);
 var options = 
 {
 
+width: 500,
+height: 300, 
 title: 'Mis Consumos Mensuales'
 
 };
@@ -59,6 +64,22 @@ chart.draw(data, options);
 }
 
 
+
+function cargarGastos()
+
+{
+
+var urlSearch = window.location.search;
+var familia = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.length );	
+var url = "http://localhost/App Consumos/logica.php?opcion=4&";
+url = url + "&familia=" + familia + "&callback=?";
+
+var inicio = $.getJSON( url , cargGasUltMes);
+
+
+}
+
+
 // El siguiente metodo nos permite obtener un arreglo de los consumos de un cliente dado
 
 function cargarArreglo()
@@ -67,14 +88,14 @@ function cargarArreglo()
 
 	var urlSearch=window.location.search;
 	var familia = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.length );
-    var url="http://localhost/App Consumos/logica.php";
-    url = url + "?opcion=3&familia=" + familia + "&callback=?";   
+    var url1="http://localhost/App Consumos/logica.php";
+    url1 = url1 + "?opcion=3&familia=" + familia + "&callback=?";   
 
     //console.log(url);    
 
     var arreglo = [ [ "MesId" , "ImporteSoles" ] ];
     
-    var prueba = $.getJSON( url, function(presultado)
+    var prueba = $.getJSON( url1, function(presultado)
     {                
     	
 		for(i=0 ; i< presultado.length ; i++)
@@ -89,3 +110,36 @@ function cargarArreglo()
 return arreglo;				  
 
 }
+
+
+//Este metodo lista los consumos del ultimo mes 
+
+function cargGasUltMes(presultado)
+{
+	console.log('funciona');
+	var lista="";
+
+	for( var i=0 ; presultado.length ; i++ )
+	{
+	 
+	 lista+="<tr>";
+	 lista+="<td>" + presultado[i].MESID + "</td>";
+	 lista+="<td>" + presultado[i].FECHA + "</td>";
+	 lista+="<td>" + presultado[i].TIPO + "</td>";
+	 lista+="<td>" + presultado[i].FAMILIA + "</td>";
+	 lista+="<td>" + presultado[i].SUBFAMILIA + "</td>";
+	 lista+="<td>" + presultado[i].PRODUCTO + "</td>";
+	 lista+="<td>" + presultado[i].IMPORTESOLES + "</td>";
+	 lista+="</tr>";
+
+	 console.log(lista);
+	 $("#gastodId").html(lista);
+
+
+	}
+
+}
+
+
+
+
