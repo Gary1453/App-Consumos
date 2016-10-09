@@ -26,9 +26,10 @@
 			var arreglo_bar = cargarArreglo( 'bar' , url_bar );
 			var options_bar = 
 			{
+				width:500,
+				height:300,
 				chart: 
 				{
-				
 				title: 'Cargos y Abonos',
 				subtitle: 'Ultimo mes en vigencia',
 				

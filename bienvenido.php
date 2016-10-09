@@ -21,14 +21,21 @@ session_start();
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
+
 </head>
 
 
 <body>
 
 
-        <header>
+        <header align="center">
 
+	        <ul>
+		        <li> <a href="#" > Logout </a> </li>
+		        <li> <a href="#" > Abonos </a> </li>
+		        <li> <a href="#" > Abonos Planillas </a> </li>
+		        <li> <a href="#" > Productos </a> </li>
+		    </ul>
 
         </header>
 
@@ -43,8 +50,8 @@ session_start();
 
 		</h1>
 
-		<div id="piechart" align="center" style="width: 900px; height: 500px;" ></div>
-		<div id="columnchart_material" style="width: 900px; height: 500px;"></div>
+		<div id="piechart" align="center" style="width: 800px; height: 300px;" ></div>
+		<div id="columnchart_material" align="center"  style="width: 900px; height: 300px;"></div>
 
 
         <footer>
