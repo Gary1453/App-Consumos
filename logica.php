@@ -378,7 +378,7 @@ switch ($opcion) {
 						Select 
 
 						Con.MesId,
-						sum( Con.ImporteSoles ) as ImporteSoles
+						sum( Con.ImporteSoles ) as Importe
 
 						from 
 						gc_consumos Con 
@@ -482,12 +482,12 @@ switch ($opcion) {
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
 			//$clienteid='0010683677';
-			$mesid = $_GET['mesid'];
+			//$mesid = $_GET['mesid'];
 			$sql = "
 						Select 
 
 						Con.MesId,
-						sum( Con.ImporteSoles ) as ImporteSoles
+						sum( Con.ImporteSoles ) as Importe
 
 						from 
 						gc_consumos Con 
@@ -533,14 +533,15 @@ switch ($opcion) {
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
-			//$clienteid = $_SESSION['clienteid'];
-			$clienteid='0010683677';
+			$clienteid = $_SESSION['clienteid'];
+			//$clienteid='0010683677';
 			$mesid = $_GET['mesid'];
 			$sql = "
 						Select 
 
 						Con.Clienteid,
 						Con.MesId,
+						Con.Fecha,
 						Con.Descripcion,
 						Con.Producto,
 						Con.Canal,
