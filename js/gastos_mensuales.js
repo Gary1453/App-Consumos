@@ -51,7 +51,7 @@ var chart = new google.visualization.ColumnChart(document.getElementById('column
 			var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
 			var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );	
 			var mesid = data.getValue(selectedItem.row, 0);
-			var url = "http://localhost/App Consumos/descripcion_gastos.html";
+			var url = "http://localhost/App Consumos/descripcion_gastos.php";
 		 	
 			if( tipo == 'CARGOS')
 			{

@@ -92,7 +92,7 @@ if( tipo == 'pie' )
 		if (selectedItem) 
 		{
 			var familia = data.getValue(selectedItem.row, 0);
-			window.location.href="http://localhost/App Consumos/gastos_mensuales.html?"
+			window.location.href="http://localhost/App Consumos/gastos_mensuales.php?"
 								  + "tipo=CARGOS" + "&familia=" + familia;
 
 		}

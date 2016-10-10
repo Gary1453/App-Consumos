@@ -36,17 +36,17 @@ session_start();
         
         <li> 
         
-        <a href="http://localhost:/App Consumos/gastos_mensuales.html?tipo=ABONOS&familia=" > 
+        <a href="http://localhost:/App Consumos/gastos_mensuales.php?tipo=ABONOS&familia=" > 
         Abonos
         </a> 
         
         </li>
 
-        <a href="http://localhost:/App Consumos/gastos_mensuales.html?tipo=ABONOS_PLANILLA&familia=" > 
+        <a href="http://localhost:/App Consumos/gastos_mensuales.php?tipo=ABONOS_PLANILLA&familia=" > 
         Abonos Planilla
         </a> 
 
-        <li> <a href="http://localhost:/App Consumos/gastos_mensuales.html" > Productos </a> </li>
+        <li> <a href="http://localhost:/App Consumos/gastos_mensuales.php" > Productos </a> </li>
     </ul>
 
 	</header>
