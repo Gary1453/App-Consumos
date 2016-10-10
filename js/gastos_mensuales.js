@@ -1,20 +1,20 @@
 
+// Variables globales
+
+var urlSearch = window.location.search;
+var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
+var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );	
+var url = "http://localhost/App Consumos/logica.php";
 
 google.charts.load('current', {'packages':['corechart']});
-//google.charts.setOnLoadCallback( drawChart );
 google.charts.setOnLoadCallback( function(){
     
-    var arreglo = cargarArreglo();
-	
+    var arreglo = cargarArreglo();	
 
-	var urlSearch = window.location.search;
-	var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
-	var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );	
-	
 	setTimeout( function()
 	{
 
-		drawChart(arreglo);
+	drawChart(arreglo);
 
 	}, 1000); 
 
@@ -47,27 +47,10 @@ var chart = new google.visualization.ColumnChart(document.getElementById('column
 		if (selectedItem) 
 
 		{
-			var urlSearch = window.location.search;
-			var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
-			var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );	
 			var mesid = data.getValue(selectedItem.row, 0);
-			var url = "http://localhost/App Consumos/descripcion_gastos.php";
-		 	
-			if( tipo == 'CARGOS')
-			{
-				window.location.href= url + "?familia=" + familia + "&mesid=" + mesid + "&tipo=" + tipo;
-
-			}
-			else if (tipo == 'ABONOS')
-			{
-
-				window.location.href= url + "?familia=" + familia + "&mesid=" + mesid + "&tipo=" + tipo;
-			}
-			else if ( tipo = 'ABONOS_PLANILLA')
-			{
-
-				window.location.href= url + "?familia=" + familia + "&mesid=" + mesid + "&tipo=" + tipo;
-			}
+			var url = "http://localhost/App Consumos/descripcion_gastos.php";		 	
+		 	window.location.href= url + "?familia=" + familia + "&mesid=" + mesid + "&tipo=" + tipo;
+			
 
 		}
 
@@ -84,30 +67,10 @@ chart.draw(data, options);
 function cargarGastos()
 
 {
-
-var urlSearch = window.location.search;
-var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
-var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );		
-var url = "http://localhost/App Consumos/logica.php";
-
-	if( tipo == 'CARGOS')
-	{
-	  url = url + "?opcion=" + 5 + "&familia=" + familia + "&mesid=" + "201606" + "&callback=?";
-
-	}
-	else if (tipo == 'ABONOS')
-	{
-
-	  url = url + "?opcion=" + 7  + "&mesid=" + "201606" + "&callback=?";
-	}
-	else if ( tipo = 'ABONOS_PLANILLA')
-	{
-
- 	  url = url + "?opcion=" + 9  + "&mesid=" + "201606" + "&callback=?";
-	}
-
-
-var inicio = $.getJSON( url , cargGasUltMes);
+	
+	var opcion ={"CARGOS" : 5  , "ABONOS": 7 , "ABONOS_PLANILLA": 9 };
+	url = url + "?opcion=" + opcion[tipo] + "&familia=" + familia + "&mesid=" + "201606" + "&callback=?";
+	var inicio = $.getJSON( url , cargGasUltMes);
 
 
 }
@@ -119,31 +82,8 @@ function cargarArreglo()
 
 {
 
-	var urlSearch = window.location.search;
-	var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
-	var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );	
-	var url1="http://localhost/App Consumos/logica.php";
-	
-
-	if( tipo == 'CARGOS')
-	{
-		url1 = url1 + "?opcion=" +  3 + "&familia=" + familia + "&callback=?";
-
-	}
-	else if (tipo == 'ABONOS')
-	{
-
-		url1 = url1 + "?opcion=" +  6 + "&callback=?";
-	}
-	else if ( tipo = 'ABONOS_PLANILLA')
-	{
-
-		url1 = url1 + "?opcion=" +  8 + "&callback=?";
-	}
-
-    
-       
-
+	var opcion ={"CARGOS" : 3  , "ABONOS": 6 , "ABONOS_PLANILLA": 8 };
+	var url1 = url + "?opcion=" +  opcion[tipo] + "&familia=" + familia + "&callback=?";
     var arreglo = [ [ "MesId" , "ImporteSoles" ] ];
     
     var prueba = $.getJSON( url1, function(presultado)
@@ -158,7 +98,7 @@ function cargarArreglo()
 
     });
 			  
-return arreglo;				  
+return arreglo;		
 
 }
 
@@ -167,55 +107,45 @@ return arreglo;
 
 function cargGasUltMes(presultado)
 {
-	console.log('funciona');
-	var urlSearch = window.location.search;
-	var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
 	var lista="";
 
 	for( var i=0 ; presultado.length ; i++ )
 	{
 	 
+
+	 lista+="<tr>";
+	 
+	 if(tipo != "CARGOS" )
+	 {
+	 
+	 lista+="<td>" + presultado[i].CLIENTEID + "</td>";
+
+	 }
+
+	 lista+="<td>" + presultado[i].MESID + "</td>";
+	 lista+="<td>" + presultado[i].FECHA + "</td>";
+
 	 if( tipo == "CARGOS")
 	 {
-	 lista+="<tr>";
-	 lista+="<td>" + presultado[i].MESID + "</td>";
-	 lista+="<td>" + presultado[i].FECHA + "</td>";
-	 lista+="<td>" + presultado[i].TIPO + "</td>";
+
 	 lista+="<td>" + presultado[i].FAMILIA + "</td>";
 	 lista+="<td>" + presultado[i].SUBFAMILIA + "</td>";
-	 lista+="<td>" + presultado[i].PRODUCTO + "</td>";
-	 lista+="<td>" + presultado[i].IMPORTESOLES + "</td>";
-	 lista+="</tr>";
+
 	 }
-	 else if ( tipo == "ABONOS")
+
+	 else
 	 {
 
-	 lista+="<tr>";
-	 lista+="<td>" + presultado[i].MESID + "</td>";
-	 lista+="<td>" + presultado[i].FECHA + "</td>";
-	 lista+="<td>" + presultado[i].TIPO + "</td>";
 	 lista+="<td>" + presultado[i].DESCRIPCION + "</td>";
+
+	 } 
+
 	 lista+="<td>" + presultado[i].PRODUCTO + "</td>";
 	 lista+="<td>" + presultado[i].CANAL + "</td>";
 	 lista+="<td>" + presultado[i].IMPORTESOLES + "</td>";
 	 lista+="</tr>";
 
-	 } 
 
-	 else if ( tipo == "ABONOS_PLANILLA")
-	 {
-
-	 lista+="<tr>";
-	 lista+="<td>" + presultado[i].MESID + "</td>";
-	 lista+="<td>" + presultado[i].FECHA + "</td>";
-	 lista+="<td>" + presultado[i].TIPO + "</td>";
-	 lista+="<td>" + presultado[i].DESCRIPCION + "</td>";
-	 lista+="<td>" + presultado[i].PRODUCTO + "</td>";
-	 lista+="<td>" + presultado[i].CANAL + "</td>";
-	 lista+="<td>" + presultado[i].IMPORTESOLES + "</td>";
-	 lista+="</tr>";
-
-	 } 
 
 	  console.log(lista);
 		 $("#gastodId").html(lista);

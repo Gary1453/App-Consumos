@@ -31,12 +31,40 @@
 
         <tr>
 
+            <?php 
+
+                $tipo=$_GET['tipo'];
+
+                if($tipo != "CARGOS")
+                {
+                    echo "<th> Clienteid </th>";
+                }
+
+            ?>
+
             <th> MesId </th>
             <th> Fecha </th>
-            <th> Tipo </th>
-            <th> Familia </th>
-            <th> SubFamilia </th>
+
+            <?php 
+
+                $tipo=$_GET['tipo'];
+
+                if($tipo == "CARGOS")
+                {
+                    echo "<th> Familia </th>";
+                    echo "<th> SubFamilia </th>";
+                }
+
+                else
+                {
+                    echo "<th> Descripcion </th>";
+
+                }    
+
+            ?>                    
+            
             <th> Producto </th>
+            <th> Canal </th>
             <th> ImporteSoles </th>
 
         </tr>
