@@ -2,9 +2,6 @@
 <?php
 
 session_start();
-//$_SESSION['nombre']="gary";
-//$nombre=$_SESSION['nombre'];
-
 
 ?>
 
@@ -32,21 +29,29 @@ session_start();
 
     <ul>
         
-        <li> <a href="#" > Logout </a> </li>
+        <li> 
+
+          <a href="http://localhost:/App Consumos/logica.php?opcion=10" > Logout </a> 
+
+        </li>
         
         <li> 
         
         <a href="http://localhost:/App Consumos/gastos_mensuales.php?tipo=ABONOS&familia=" > 
+        
         Abonos
+        
         </a> 
         
         </li>
 
         <a href="http://localhost:/App Consumos/gastos_mensuales.php?tipo=ABONOS_PLANILLA&familia=" > 
+        
         Abonos Planilla
+        
         </a> 
 
-        <li> <a href="http://localhost:/App Consumos/gastos_mensuales.php" > Productos </a> </li>
+        <li>  <a href="#" > Productos </a> </li>
     </ul>
 
 	</header>

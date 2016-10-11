@@ -25,6 +25,8 @@
 
     <div id="columnbar" align="center" style="width: 700px; height: 350px;" ></div>
 
+<article>
+
     <table border="1" style="width:500px" align="center">
 
     <thead>
@@ -72,13 +74,19 @@
     </thead>
 
     <tbody id="gastodId" ></tbody>
+
     <tfoot></tfoot>
 
     </table>
 
+</article>
 
 
-    <footer></footer>
+    <footer>
+        
+    <button type="button" align="center"  id="regresarId" name="regresar" > Regresar </button>
+
+    </footer>
 
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   

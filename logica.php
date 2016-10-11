@@ -17,9 +17,7 @@ switch ($opcion) {
 			$usuario = $_POST['usuario'];
 			$tipodocumento = $_POST['TipoDocumento'];
 			$tipodocumento = $tipodocumento[0];
-			$password = $_POST['password'];
-			
-			//echo $usuario . " " . $tipodocumento . " " . $password;
+			$password = $_POST['password'];		
 
 			session_start();			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
@@ -91,7 +89,6 @@ switch ($opcion) {
 			//print_r($conn);		
 			session_start();	
 			$clienteid=$_SESSION['clienteid'];
-			//$clienteid='0009533955';
 			$sql = "
 						Select
 
@@ -141,7 +138,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0001319847';
 			$sql = "
 					Select
 					*
@@ -204,7 +200,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0000810440';
 			$familia = $_GET['familia'];
 			$sql = "
 						Select
@@ -259,7 +254,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0002187771';
 			$familia = $_GET['familia'];
 			$sql = "
 					Select 
@@ -314,7 +308,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0002187771';
 			$familia = $_GET['familia'];
 			$mesid=$_GET['mesid'];
 			$sql = "
@@ -371,7 +364,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0008788787';
 
 			$sql = "
 
@@ -425,7 +417,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0008788787';
 			$mesid = $_GET['mesid'];
 			$sql = "
 						Select 
@@ -481,8 +472,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0010683677';
-			//$mesid = $_GET['mesid'];
 			$sql = "
 						Select 
 
@@ -534,7 +523,6 @@ switch ($opcion) {
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
 			$clienteid = $_SESSION['clienteid'];
-			//$clienteid='0010683677';
 			$mesid = $_GET['mesid'];
 			$sql = "
 						Select 
@@ -576,6 +564,21 @@ switch ($opcion) {
 			
 
 			 echo $response;
+
+
+			 break;
+
+
+			 //Este metodo permite cerrar sesion
+
+			 case 10:					
+			
+
+			session_start();
+			session_unset();
+			session_destroy();
+
+			header("Location: http://localhost/App Consumos/login.html");
 
 
 			 break;

@@ -15,6 +15,8 @@
 	<body>
 
 
+<article>
+
 		<header></header>
 
 
@@ -71,8 +73,13 @@
 
 			</table>
 
+</article>
 
-			<footer></footer>
+			<footer>
+				
+ 				<button type="button" align="center"  id="regresarId" name="regresar" > Regresar </button>
+
+			</footer>
 
 		  
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   

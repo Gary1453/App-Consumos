@@ -44,7 +44,7 @@
 				drawChart( arreglo_bar ,'columnchart_material', options_bar , 'bar' );
 
 
-			},1000);
+			},2000);
 
 			
 

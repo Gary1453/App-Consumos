@@ -15,12 +15,28 @@ $(document).on('ready',function(){
 
 	var inicio = $.getJSON( url , cargarLista );  
 
+
+//Manipulacion de eventos
+
+$("#regresarId").on("click",function(){
+
+	var url = "http://localhost/App Consumos/gastos_mensuales.php" + 
+			  "?tipo=" + tipo + "&familia=" + familia;
+
+	window.location.href = url;
+
+
+});
+
+
+
 });
 
 
 //Metodos de apoyo 
 
-function cargarLista(presultado){
+function cargarLista(presultado)
+{
 
 var lista="";
 

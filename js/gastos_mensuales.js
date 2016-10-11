@@ -16,9 +16,20 @@ google.charts.setOnLoadCallback( function(){
 
 	drawChart(arreglo);
 
-	}, 1000); 
+	}, 2000); 
 
 	cargarGastos();
+
+
+// Manipulacion de eventos
+
+$("#regresarId").on("click",function(){
+
+	window.location.href = "http://localhost/App Consumos/bienvenido.php";
+
+
+});
+
 
 });
 
@@ -92,12 +103,19 @@ function cargarArreglo()
 		for(i=0 ; i< presultado.length ; i++)
 		{
  			
- 			arreglo.push( [ presultado[i].MESID , parseInt( presultado[i].IMPORTE )  ] );
+ 			arreglo.push( [ presultado[i].MESID , parseInt( presultado[i].IMPORTE ) ] );
 
 		}			
 
+		if( arreglo.length == 1 )
+		{
+
+			arreglo.push(0,0);
+
+		}	
+
     });
-			  
+		  
 return arreglo;		
 
 }
@@ -147,10 +165,27 @@ function cargGasUltMes(presultado)
 
 
 
-	  console.log(lista);
+	  	 //console.log(lista);
 		 $("#gastodId").html(lista);
 
 	}
 
+
+}
+
+
+function nvl ( valor1 , valor2)
+{
+
+	if( valor1 == null )
+	{
+		return valor2;
+
+	}
+	else
+	{
+
+		return valor1;
+	}
 
 }
