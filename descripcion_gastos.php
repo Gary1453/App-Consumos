@@ -6,23 +6,24 @@
 	<head>
 
 	        
-	        <meta charset=”utf8”>
-	        <title> Login Bank </title>
+    <meta charset=”utf8”>
+    <title> Login Bank </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 
 	</head>
 
 
 	<body>
-
+	<div class="container-fluid">
 
 <article>
 
 		<header></header>
 
 
-			<h1 align="center">Hola mundo</h1>
+			<h2 align="center"> Detalle de gastos </h2>
 
-			<table border="1" style="width:800px" align="center">
+			<table border="1" style="width:800px" align="center" class="table table-striped" >
 
 				<thead>
 
@@ -77,7 +78,13 @@
 
 			<footer>
 				
- 				<button type="button" align="center"  id="regresarId" name="regresar" > Regresar </button>
+				<div align="right" style="padding-top:100px;padding-right: 200px;" >
+ 				
+	 				<button class="btn btn-default" type="button" align="center"  id="regresarId" 
+	 						name="regresar" > Regresar 
+	 				</button>
+
+ 				</div>
 
 			</footer>
 
@@ -85,6 +92,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
 		<script type="text/javascript" src="js/descripcion_gastos.js" ></script>
 
+	</div>
 	</body>
 
 

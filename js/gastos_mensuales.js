@@ -111,6 +111,9 @@ function cargarArreglo()
 		{
 
 			arreglo.push(0,0);
+			alert('Usted no presenta con este tipo de transacciones en el ultimo semestre');
+			window.location.href = "http://localhost/App Consumos/bienvenido.php";
+
 
 		}	
 
