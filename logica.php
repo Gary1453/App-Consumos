@@ -62,15 +62,15 @@ switch ($opcion) {
 
 			if($valor == 1)
 			{
-
-				header("Location: http://localhost/App Consumos/bienvenido.php");
+				
+				header("Location: bienvenido.php");
 				
 
 			}
 			else
 			{
 			
-				header("Location: http://localhost/App Consumos/login.html");
+				header("Location: login.html");
 				
 
 			};

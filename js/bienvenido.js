@@ -9,6 +9,7 @@
 			var url="http://localhost/App Consumos/logica.php";
 
 			//Cargamos el grafico Pie
+			
 			var url_pie = url +  "?opcion=1&callback=?";
 			var arreglo_pie = cargarArreglo( 'pie' , url_pie );
 			var options_pie = 
@@ -22,6 +23,7 @@
 			};
 
 			//Cargamos el grafico Bar
+
 			var url_bar = url + "?opcion=2&callback=?"; 
 			var arreglo_bar = cargarArreglo( 'bar' , url_bar );
 			var options_bar = 
