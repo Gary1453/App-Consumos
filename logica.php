@@ -71,6 +71,7 @@ switch ($opcion) {
 			{
 			
 				header("Location: http://localhost/App Consumos/login.html");
+				
 
 			};
 
