@@ -8,7 +8,7 @@
         
 		<meta charset=”utf8”>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<title> Login Bank </title>
 
 
@@ -17,50 +17,49 @@
 
 <body>
 
-<div class="container-fluid" style="padding-top: 100px;padding-left: 100px;">
+<div data-role="page" style="padding-top: 100px;padding-left: 100px;">
 
     <header>
     </header>
 
     	<!-- <div style="float: left;" > -->
-    	<div>
+    	<div data-role="header", class="ui-content" >
 
-		<form method="POST"	action="http://localhost/App Consumos/logica.php?opcion=0" 
-			  class="form-horizontal">
+		<form method="POST"	action="http://localhost/App Consumos/logica.php?opcion=0">
 
 			
-			<div class="form-group">
+			<div >
 
-			<label for="inputEmail3" class="col-sm-2 control-label"> NumDocumento </label>
+			<label for="inputEmail3" > NumDocumento </label>
 
-				<div class="col-sm-10">
+				<div >
 				
-				<input style="width:500px" type = "Text" id="UserId" name="usuario" class="form-control" >
+				<input style="width:500px" type = "Text" id="UserId" name="usuario"  >
 
 				</div>	
 
 			</div>
 
 
-			<div class="form-group">
+			<div >
 
-			<label for="inputEmail3" class="col-sm-2 control-label"> Password</label>
+			<label for="inputEmail3" > Password</label>
 
-				<div class="col-sm-10">
+				<div >
 				
-				<input style="width:500px" type = "password" id = "PassId" name = "password" class="form-control" placeholder="Password"> 
+				<input style="width:500px" type="password" id = "PassId" name = "password" placeholder="Password"> 
 
 				</div>	
 
 			</div>
 
-			<div class="form-group">
+			<div>
 
-			<label for="inputEmail3" class="col-sm-2 control-label"> TipoDocumento </label>
+			<label for="inputEmail3"> TipoDocumento </label>
 
-				<div class="col-sm-10">
+				<div>
 				
-					<select style="width:500px"  class="form-control" id = "TipoDocumento" 							name="TipoDocumento[]">
+					<select style="width:500px"  id = "TipoDocumento" name="TipoDocumento[]">
 						
 						<option value = 1  selected > Dni </option>
 						<option value = 5 > Carnet de Extranjeria </option>
@@ -74,12 +73,12 @@
 
 
 
-			<div id="BotonesID" align="right" class="form-group" style="padding-right:550px;">
+			<div id="BotonesID" align="right"  style="padding-right:550px;">
 
-				<div class="col-sm-offset-2 col-sm-10" >
+				<div  >
 
-					<input class="btn btn-default"  type="submit" id="IngresarID" value="Ingresar" >
-					<input class="btn btn-default" type="reset" id="ResetID" value="Limpiar" >
+					<input  type="submit" id="IngresarID" value="Ingresar" >
+					<input  type="reset" id="ResetID" value="Limpiar" >
 
 				</div>
 
@@ -100,16 +99,17 @@
 -->
 
 </div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>  
 
 		<script type="text/javascript">
 
 			$(document).on( 'ready', function(){
 
-				//$("#UserId").val('');
-				//$("#PassId").val('');
-				document.getElementById("UserId").value="";
-				document.getElementById("PassId").value="";
+				$("#UserId").val('');
+				$("#PassId").val('');
+				//document.getElementById("UserId").value="";
+				//document.getElementById("PassId").value="";
 
 			}
 			
