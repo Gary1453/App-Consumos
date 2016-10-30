@@ -53,7 +53,7 @@ session_start();
 
       <li class="active">
 
-     	 <a href="http://localhost:/App Consumos/gastos_mensuales.php?tipo=ABONOS&familia=" > 
+     	 <a href="http://localhost:/Web Consumos/gastos_mensuales.php?tipo=ABONOS&familia=" > 
         
          Abonos
         
@@ -63,7 +63,7 @@ session_start();
       
       <li>
       
-      	<a href="http://localhost:/App Consumos/gastos_mensuales.php?tipo=ABONOS_PLANILLA&familia=" > 
+      	<a href="http://localhost:/Web Consumos/gastos_mensuales.php?tipo=ABONOS_PLANILLA&familia=" > 
         
         Abonos Planilla
         
@@ -75,7 +75,7 @@ session_start();
 
       <li> 
 
-        <a href="http://localhost:/App Consumos/logica.php?opcion=10" > Logout </a> 
+        <a href="http://localhost:/Web Consumos/logica.php?opcion=10" > Logout </a> 
 
       </li>
 

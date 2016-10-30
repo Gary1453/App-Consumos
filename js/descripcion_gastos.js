@@ -5,7 +5,7 @@
 	var mesid = urlSearch.substring( urlSearch.indexOf('&') + 7 , urlSearch.lastIndexOf('&') );
 	var tipo = urlSearch.substring( urlSearch.lastIndexOf('=') + 1 , urlSearch.length );
 	var familia = urlSearch.substring( urlSearch.indexOf('=') + 1  , urlSearch.indexOf('&') );
-	var url = "http://localhost/App Consumos/logica.php";
+	var url = "http://localhost/Web Consumos/logica.php";
 
 
 $(document).on('ready',function(){
@@ -20,7 +20,7 @@ $(document).on('ready',function(){
 
 $("#regresarId").on("click",function(){
 
-	var url = "http://localhost/App Consumos/gastos_mensuales.php" + 
+	var url = "http://localhost/Web Consumos/gastos_mensuales.php" + 
 			  "?tipo=" + tipo + "&familia=" + familia;
 
 	window.location.href = url;

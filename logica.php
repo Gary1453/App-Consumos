@@ -4,6 +4,9 @@
 //http://localhost/App Consumos.php
 
 putenv('ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Max-Age: 1000');
 $opcion=$_GET['opcion'];
 
 switch ($opcion) {
@@ -86,10 +89,9 @@ switch ($opcion) {
 		
 			//http://localhost/App Consumos.php?opcion=1&callback=?
 			//echo 'aaaa = '.getenv('ORACLE_HOME');
+			session_start();
+			$clienteid = $_SESSION['clienteid'];
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
-			//print_r($conn);		
-			session_start();	
-			$clienteid=$_SESSION['clienteid'];
 			$sql = "
 						Select
 
@@ -200,8 +202,9 @@ switch ($opcion) {
 			
 			$conn=oci_connect("natan","nisekoi","localhost/XE");
 			session_start();
-			$clienteid = $_SESSION['clienteid'];
+			$clienteid = $_SESSION['clienteid'];			
 			$familia = $_GET['familia'];
+
 			$sql = "
 						Select
 
@@ -238,7 +241,6 @@ switch ($opcion) {
 
 
 			 $response = $_GET["callback"]."(".json_encode($lista).")";
-			
 
 			 echo $response;
 
@@ -579,11 +581,10 @@ switch ($opcion) {
 			session_unset();
 			session_destroy();
 
-			header("Location: http://localhost/App Consumos/login.html");
+			header("Location: http://localhost/Web Consumos/login.html");
 
 
 			 break;
-
 
 }
 

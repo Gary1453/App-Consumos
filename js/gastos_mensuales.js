@@ -4,7 +4,7 @@
 var urlSearch = window.location.search;
 var tipo = urlSearch.substring( urlSearch.indexOf('=') +1 , urlSearch.indexOf('&') );
 var familia = urlSearch.substring( urlSearch.lastIndexOf( '=' ) + 1 , urlSearch.length );	
-var url = "http://localhost/App Consumos/logica.php";
+var url = "http://localhost/Web Consumos/logica.php";
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback( function(){
@@ -25,7 +25,7 @@ google.charts.setOnLoadCallback( function(){
 
 $("#regresarId").on("click",function(){
 
-	window.location.href = "http://localhost/App Consumos/bienvenido.php";
+	window.location.href = "http://localhost/Web Consumos/bienvenido.php";
 
 
 });
@@ -59,7 +59,7 @@ var chart = new google.visualization.ColumnChart(document.getElementById('column
 
 		{
 			var mesid = data.getValue(selectedItem.row, 0);
-			var url = "http://localhost/App Consumos/descripcion_gastos.php";		 	
+			var url = "http://localhost/Web Consumos/descripcion_gastos.php";		 	
 		 	window.location.href= url + "?familia=" + familia + "&mesid=" + mesid + "&tipo=" + tipo;
 			
 
@@ -112,7 +112,7 @@ function cargarArreglo()
 
 			arreglo.push(0,0);
 			alert('Usted no presenta con este tipo de transacciones en el ultimo semestre');
-			window.location.href = "http://localhost/App Consumos/bienvenido.php";
+			window.location.href = "http://localhost/Web Consumos/bienvenido.php";
 
 
 		}	

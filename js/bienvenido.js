@@ -6,7 +6,7 @@
 		google.charts.setOnLoadCallback( function(){
 
 
-			var url="http://localhost/App Consumos/logica.php";
+			var url="http://localhost/Web Consumos/logica.php";
 
 			//Cargamos el grafico Pie
 			
@@ -94,7 +94,7 @@ if( tipo == 'pie' )
 		if (selectedItem) 
 		{
 			var familia = data.getValue(selectedItem.row, 0);
-			window.location.href="http://localhost/App Consumos/gastos_mensuales.php?"
+			window.location.href="http://localhost/Web Consumos/gastos_mensuales.php?"
 								  + "tipo=CARGOS" + "&familia=" + familia;
 
 		}
